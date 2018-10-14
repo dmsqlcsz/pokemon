@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>pokemon</title>
+	<style>
+		body{ width:900px; margin:auto; background-image: url(포켓볼.gif);}
+		.textBubble{ height:25px; background:#ddd; border-radius:6px; position: relative;float:left;margin:5px;line-height: 25px; padding: 5px;}
+		.textBubble:hover{ background: green; color:white; cursor:pointer; }
+		#textContainer:after{ content: "";display: block; clear: both; }
+		#disp2{text-align: center; height:100px; line-height: 100px; border: 4px solid red;font-size:3em;background: red; color:white;margin-top: 30px;}
+		#disp{height:50px; text-align:center;  font-weight:bold; padding-top: 20px;}
+	</style>
+</head>
+	
+<body>
+	<div id="disp"></div>
+	<div id="textBase"></div>
+	<div id="textContainer"></div>
+	<div id="disp2"></div>
+	
+	<img src="리자몽.gif">
+	<img src="꼬부기.gif">
+	<img src="캐터피.gif">
+	<img src="이브이.gif">
+	<img src="샤미드.gif">
+	<img src="님피아.gif">
+	<img src="리피아.gif">
+	<img src="칠색조.gif">
+	<img src="프리즈.gif">
+	<img src="피카츄.gif">
+	<img src="데덴네.gif">
+	<img src="거북왕.gif">
+	<img src="루기아.gif">
+	<img src="얼루기.gif">
+	<img src="야도란.gif">
+	<img src="내루미.gif">
+
+	
+ <script>
+ 	var text="피카츄 데덴네 리자몽 꼬부기 어니부기 거북왕 블레이범 이상해씨 이상해꽃 라플레시아 캐터피 아보 이브이 샤미드 니드리나 내루미 님피아 루기아 가디 깨비드릴조 라프라스 리피아 뮤 미뇽 모래두지 아리아도스 야도란 메가야도란 얼루기 칠색조 코일 콘치 피죤 팬텀 프리즈";
+
+ 	var p = text.split(" ");
+ 	var c = document.getElementById("textBase");
+ 	var displayText = "사진속 포켓몬들의 이름을 맞춰보세요!";
+ 	var tNumber = 0;
+
+ 	for(var i=0; i < p.length; i++){
+ 		var d = c.cloneNode(true);
+
+ 		if(p[i].length == 3){ tNumber++; };
+
+ 		d.innerHTML = p[i];
+ 		d.className = "textBubble";
+ 		d.id = "a" + i;
+ 		d.onclick = function(){
+ 			if(this.innerHTML.length == 3){
+ 				displayText += this.innerHTML + ", ";
+ 				disp.innerHTML = displayText;
+ 				textContainer.removeChild(document.getElementById(this.id));
+ 				tNumber --;
+ 				if(tNumber == 0){
+ 					disp2.innerHTML = "당신은 포켓몬 박사!";
+ 					clearInterval(k);
+ 				}else{
+ 					disp2.innerHTML =  + tNumber+ "개 남았어요~";	
+ 				}
+ 			}else{
+ 				disp2.innerHTML = "땡!";
+ 			}
+ 		}
+
+ 		textContainer.appendChild(d);	
+ 	}
+ 	var time = 0;
+ 	displayText += "("+tNumber+")마리 있어요";
+ 	disp.innerHTML = displayText;
+ 	var k = setInterval(function(){ time += 0.01; clock.innerHTML = time; },10);
+
+ </script>
+</body>
+</html>
